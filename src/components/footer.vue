@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    #footer{text-align:center;margin-top:50px;color:#aaa;
-        em{color:#000;}
+    #footer{text-align:center;background:#444;color:#aaa;padding:30px 0;
+        em{color:#fff;}
     }
 </style>

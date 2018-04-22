@@ -1,8 +1,8 @@
 <template>
     <div class="login_wrap">
-        <form action="" method="post">
+        <h2 class="content-title">로그인</h2>
+        <form action="" method="post" @submit="memberLogin">
             <section class="login">
-                <h2 class="title">College Society Service</h2>
                 <p>
                     <label>
                         <input type="text" name="id" id="login_id" size="80" placeholder="아이디" class="input fullSize" required autofocus>
@@ -10,18 +10,15 @@
                 </p>
                 <p>
                     <label>
-                        <input type="password" name="pwd" id="login_pw" size="80" placeholder="비밀번호" class="input fullSize" required>
+                        <input type="password" name="pw" id="login_pw" size="80" placeholder="비밀번호" class="input fullSize" required>
                     </label>
                 </p>
                 <p>
-                    <button type="submit" class="btn submit full">로그인</button>
+                    <button type="submit" class="btn submit fullSize">로그인</button>
                 </p>
                 <p>
-                    <button type="button" class="btn info full">회원가입</button>
+                    <router-link to="/register" tag="button" class="btn info fullSize">회원가입</router-link>
                 </p>
-                <footer class="copyright">
-                    Copyright (C) 2018 <em>po-fect</em> All Right Reserved.
-                </footer>
             </section>
         </form>
     </div>
@@ -34,21 +31,39 @@ export default {
         return { }
     },
     created () {
+        if (this.$store.state.isMember) {
+            alert('회원은 이용할 수 없습니다.')
+            this.$router.go(-1)
+        }
+    },
+    mounted () {
         $('#login_id').focus()
+    },
+    methods: {
+        memberLogin (event) {
+            const frm = $(event.target)
+            const _this = this
+            this.postData('/login', frm.serialize(), function (data) {
+                if (data !== 'null') {
+                    _this.$store.commit('login', JSON.parse(data))
+                    alert('로그인 되었습니다.')
+                    _this.$router.push('/')
+                } else {
+                    alert('아이디 또는 비밀번호가 일치하지 않습니다.')
+                    frm[0].id.focus()
+                }
+            })
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
     @import "@/styles/_base.scss";
-    .login_wrap{
-        background: #f5f5f5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
     .login {
-        max-width: 350px;
+        width: 350px;
+        margin: 0 auto;
+        border-radius: 3px;
         label {
             display:block;
             cursor: pointer;
@@ -62,14 +77,5 @@ export default {
         margin-bottom: 20px;
         text-align: center;
         color: $color1;
-    }
-    .copyright {
-        font-size: 11px;
-        color: #aaa;
-        text-align: center;
-        margin-top: 20px;
-        em {
-            color: #666
-        }
     }
 </style>
