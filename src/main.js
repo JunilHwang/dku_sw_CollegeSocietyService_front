@@ -7,16 +7,20 @@ import { store } from './store'
 import $ from 'jquery'
 
 Vue.config.productionTip = false
-
 const restUrl = 'http://127.0.0.1:5000'
-function getData (url, fun) {
+
+function getJsonData (url, fun) {
     url = `${restUrl}${url}`
-    $.getJSON(url, fun)
+    $.ajax({
+        url: url,
+        dataType: 'json',
+        success: fun
+    })
 }
 
 function postData (url, data, fun) {
     url = `${restUrl}${url}`
-    $.post(url, data, fun)
+    $.post(url, data).done(fun)
 }
 
 function putData (url, data, fun) {
@@ -38,7 +42,7 @@ function deleteData (url, fun) {
 
 Vue.mixin({
     methods: {
-        getData: getData,
+        getJsonData: getJsonData,
         postData: postData,
         putData: putData,
         deleteData: deleteData

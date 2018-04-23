@@ -15,7 +15,7 @@
             <nav class="gnb">
                 <ul>
                     <li><a href="#">학과소개</a></li>
-                    <li><a href="#">커뮤니티</a></li>
+                    <li><router-link to="/board/" @click.native="$router.push('/board/list/1')">커뮤니티</router-link></li>
                     <li><a href="#">학생회 활동 내역</a></li>
                     <li v-if="$store.state.isAdmin"><a href="#">관리자</a></li>
                 </ul>
@@ -57,7 +57,7 @@ export default {
         a{display:block;font-size:17px;padding:0 40px;transition:.3s;text-decoration:none;position:relative;
             &:before{content:"";display:block;position:absolute;bottom:-10px;$size:50%;left:$size;right:$size;background:$color1;height:2px;transition:.3s;}
             &:hover,
-            &.active{color:$color1;
+            &.router-link-active{color:$color1;
                 &:before{$size:40%;left:$size;right:$size;}
             }
         }
