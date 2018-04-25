@@ -3,16 +3,16 @@
         <h3 class="board-title">게시물 목록</h3>
         <ul v-if="boardList.length">
             <li v-for="data in boardList" :key="data.idx">
-                <strong class="subject" v-html="data.subject" />
+                <strong class="subject"><router-link :to="getLink(data.idx)" v-html="data.subject" /></strong>
                 <p class="desc" v-html="data.content" />
-                <p class="date" v-html="data.date" />
+                <p class="date" v-html="getDateFormat(data.reg_date)" />
             </li>
         </ul>
         <p v-else>
             게시물이 없습니다.
         </p>
         <div class="btn_group right" v-if="$store.state.isMember">
-            <router-link :to="'/board/write/'+$route.params.category" class="btn default">글작성</router-link>
+            <router-link :to="'/board/write/'+categoryId" class="btn default">글작성</router-link>
         </div>
     </div>
 </template>
@@ -25,15 +25,35 @@ export default {
             boardList: []
         }
     },
+    computed: {
+        categoryId () {
+            this.getList()
+            return this.$route.params.category
+        }
+    },
     created () {
-        const _this = this
-        this.getJsonData('/boardList/' + this.$route.params.category, function (data) {
-            _this.boardList = data
-        })
+        this.getList()
+    },
+    methods: {
+        getList () {
+            const _this = this
+            this.getJsonData('/boardList/' + this.$route.params.category, function (data) {
+                _this.boardList = data
+            })
+        },
+        getLink (index) {
+            return `/board/view/${this.$route.params.category}/${index}`
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    .board-title{font-size:17px;border-bottom:1px solid #ddd;margin-bottom:15px;padding-bottom:15px;}
+    @import "@/styles/_base.scss";
+    .board-list{
+        li{border-bottom:1px dotted #ddd;padding:20px 0}
+        .subject a{font-size:19px;color:$color1-2;}
+        .desc{padding: 5px 0;line-height:160%;color:#666;}
+        .date{font-size:12px; color:#999;}
+    }
 </style>

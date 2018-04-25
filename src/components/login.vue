@@ -36,9 +36,6 @@ export default {
             this.$router.go(-1)
         }
     },
-    mounted () {
-        $('#login_id').focus()
-    },
     methods: {
         memberLogin (event) {
             const frm = $(event.target)

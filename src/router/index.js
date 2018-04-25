@@ -61,12 +61,17 @@ export default new Router({
                     component: BoardList
                 },
                 {
-                    path: 'view',
+                    path: 'view/:category/:idx',
                     name: 'BoardView',
                     component: BoardView
                 },
                 {
                     path: 'write/:category',
+                    name: 'BoardWrite',
+                    component: BoardWrite
+                },
+                {
+                    path: 'write/:category/:idx',
                     name: 'BoardWrite',
                     component: BoardWrite
                 }

@@ -69,9 +69,6 @@ export default {
     data () {
         return { }
     },
-    mounted () {
-        $('#join_id').focus()
-    },
     methods: {
         memberInsert (event) {
             const _this = this

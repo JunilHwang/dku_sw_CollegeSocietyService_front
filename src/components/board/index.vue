@@ -21,22 +21,15 @@
 <script>
 export default {
     name: 'Board',
-    data: function () {
-        return {
-            categoryList: [],
-            category_name: '공지사항'
+    computed: {
+        categoryList () {
+            return this.$store.state.categoryList
+        },
+        category_name () {
+            let name = '공지사항'
+            if (this.categoryList.length) name = this.categoryList[this.$store.state.nowCategory].name
+            return name
         }
-    },
-    methods: {
-        setCategory (index) {
-            this.category_name = this.categoryList[index].name
-        }
-    },
-    created () {
-        const _this = this
-        this.getJsonData('/categoryList', function (data) {
-            _this.categoryList = data
-        })
     }
 }
 </script>
@@ -44,7 +37,7 @@ export default {
 <style lang="scss" scoped>
     @import '@/styles/_base.scss';
     .board-wrap{display:flex;justify-content:space-between;
-        .category{width:240px;border:1px solid #ddd;box-sizing:border-box;padding:20px;}
+        .category{width:240px;border:1px solid #ddd;box-sizing:border-box;padding:20px;height:350px;}
         .category-title{font-size:21px;color:$color1;display:block;margin-bottom:20px}
         a{display:block;padding:0 10px;border-bottom:1px dotted #ddd;line-height:40px;transition:.3s;text-decoration:none;
             &:hover,

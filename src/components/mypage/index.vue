@@ -5,24 +5,24 @@
             <h3 class="legend">회원정보 조회</h3>
             <ul>
                 <li>
-                    <strong>아이디</strong>
-                    <p v-html="member.id" />
+                    <strong class="lbl">아이디</strong>
+                    <div class="desc" v-html="member.id" />
                 </li>
                 <li>
-                    <strong>성명</strong>
-                    <p v-html="member.name" />
+                    <strong class="lbl">성명</strong>
+                    <div class="desc" v-html="member.name" />
                 </li>
                 <li>
-                    <strong>닉네임</strong>
-                    <p v-html="member.nickname" />
+                    <strong class="lbl">닉네임</strong>
+                    <div class="desc" v-html="member.nickname" />
                 </li>
                 <li>
-                    <strong>이메일</strong>
-                    <p v-html="member.email" />
+                    <strong class="lbl">이메일</strong>
+                    <div class="desc" v-html="member.email" />
                 </li>
                 <li>
-                    <strong>학번</strong>
-                    <p v-html="member.undergrad_number" />
+                    <strong class="lbl">학번</strong>
+                    <div class="desc" v-html="member.undergrad_number" />
                 </li>
             </ul>
             <div class="btn_group">

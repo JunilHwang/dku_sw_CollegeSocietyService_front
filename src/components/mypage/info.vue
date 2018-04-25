@@ -9,7 +9,7 @@
                         <li>
                             <label>
                                 <strong>성명</strong>
-                                <input type="text" name="name" :value="member.name || null" class="input fullSize" placeholder="이름을 입력해주세요." required>
+                                <input type="text" name="name" :value="member.name || null" class="input fullSize" placeholder="이름을 입력해주세요." required autofocus>
                             </label>
                         </li>
                         <li>
@@ -51,9 +51,6 @@ export default {
     },
     created () {
         this.member = this.$store.state.member
-    },
-    mounted () {
-        document.forms[0].name.focus()
     },
     methods: {
         memberUpdate (event) {

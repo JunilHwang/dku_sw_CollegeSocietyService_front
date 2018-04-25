@@ -15,7 +15,7 @@
             <nav class="gnb">
                 <ul>
                     <li><a href="#">학과소개</a></li>
-                    <li><router-link to="/board/" @click.native="$router.push('/board/list/1')">커뮤니티</router-link></li>
+                    <li><router-link to="/board/" @click.native="initCategory">커뮤니티</router-link></li>
                     <li><a href="#">학생회 활동 내역</a></li>
                     <li v-if="$store.state.isAdmin"><a href="#">관리자</a></li>
                 </ul>
@@ -33,6 +33,10 @@ export default {
             this.$store.commit('logout')
             this.$router.push('/')
             alert('로그아웃 되었습니다.')
+        },
+        initCategory () {
+            this.$router.push('/board/list/1')
+            this.setCategory(0)
         }
     }
 }

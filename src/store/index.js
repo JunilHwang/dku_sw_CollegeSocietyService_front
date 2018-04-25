@@ -12,7 +12,9 @@ export const store = new Vuex.Store({
         isAdmin: false,
         isHeader: true,
         isFooter: true,
-        member: member
+        member: member,
+        categoryList: [],
+        nowCategory: 0
     },
     mutations: {
         login (state, data) {
@@ -34,6 +36,12 @@ export const store = new Vuex.Store({
         memberPwUpdate (state, changeData) {
             state.member.pw = changeData.pw
             sessionStorage.setItem('member', JSON.stringify(state.member))
+        },
+        setCategory (state, changeData) {
+            state.categoryList = changeData
+        },
+        activeCategory (state, changeData) {
+            state.nowCategory = changeData
         }
     }
 })

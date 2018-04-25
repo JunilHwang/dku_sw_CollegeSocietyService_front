@@ -9,7 +9,7 @@
                         <li>
                             <label>
                                 <strong>현재 비밀번호 확인</strong>
-                                <input type="password" name="pw_before" class="input fullSize" placeholder="현재 비밀번호를 입력해주세요" required>
+                                <input type="password" name="pw_before" class="input fullSize" placeholder="현재 비밀번호를 입력해주세요" required autofocus>
                             </label>
                         </li>
                         <li>
@@ -45,9 +45,6 @@ export default {
     },
     created () {
         this.member = this.$store.state.member
-    },
-    mounted () {
-        document.forms[0].pw_before.focus()
     },
     methods: {
         memberUpdate (event) {
