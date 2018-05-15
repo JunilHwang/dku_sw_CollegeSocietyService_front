@@ -4,7 +4,7 @@
         <form action="" method="post" @submit="boardInsert">
             <fieldset>
                 <div class="frm_type_column">
-                    <input type="hidden" name="writer" :value="$store.state.member.name">
+                    <input type="hidden" name="writer" :value="$store.state.member.idx">
                     <input type="hidden" name="idx" v-if="$route.params.idx" :value="$route.params.idx">
                     <ul>
                         <li>
@@ -21,7 +21,7 @@
                         </li>
                     </ul>
                     <div class="btn_group">
-                        <a href="#" class="btn default" @click="$router.push(-1)">목록</a>
+                        <a href="#" class="btn default" @click="$router.go(-1)">목록</a>
                         <button type="submit" class="btn submit">전송</button>
                     </div>
                 </div>

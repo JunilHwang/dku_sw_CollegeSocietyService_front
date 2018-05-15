@@ -1,6 +1,12 @@
 <template>
     <header id="header">
         <div class="content">
+            <h3 class="logo">
+                <router-link to="/">
+                    <img src="@/assets/img/dk-logo.png" alt="단국대학교" />
+                    <p>College Society Service</p>
+                </router-link>
+            </h3>
             <div class="util">
                 <template v-if="$store.state.isMember">
                     <a href="#" @click="logout">로그아웃</a>
@@ -11,10 +17,9 @@
                     <router-link to="/register">회원가입</router-link>
                 </template>
             </div>
-            <h3 class="logo"><router-link to="/">College Society Service</router-link></h3>
             <nav class="gnb">
                 <ul>
-                    <li><a href="#">학과소개</a></li>
+                    <li><router-link to="/intro/" @click.native="initIntro">학과소개</router-link></li>
                     <li><router-link to="/board/" @click.native="initCategory">커뮤니티</router-link></li>
                     <li><a href="#">학생회 활동 내역</a></li>
                     <li v-if="$store.state.isAdmin"><a href="#">관리자</a></li>
@@ -37,6 +42,9 @@ export default {
         initCategory () {
             this.$router.push('/board/list/1')
             this.setCategory(0)
+        },
+        initIntro () {
+            this.$router.push('/intro/1')
         }
     }
 }
@@ -45,11 +53,13 @@ export default {
 
 <style lang="scss" scoped>
     @import "@/styles/_base.scss";
-    #header{background:#fff;border-bottom:1px solid #ddd;
+    #header{background:#fff;border-bottom:3px solid $color1;
         >div{@extend %auto-center;position:relative;display:flex;justify-content:space-between;align-items:center;height:100px;}
     }
-    .logo{color:$color1-2;font-size:25px;
-        a{text-decoration:none;}
+    .logo{color:$color1;font-size:17px;
+        a{text-decoration:none;display:flex;line-height:100%;flex-flow:column;justify-content:center;align-items:center;}
+        img{height:30px}
+        p{padding-top:10px;color:$color2-1;}
     }
     .util{position:absolute;right:0;top:0;line-height:20px;font-size:11px;@include clr();
         a{float:left;line-height:30px;

@@ -10,6 +10,10 @@ import Board from '@/components/board/index'
 import BoardList from '@/components/board/list'
 import BoardView from '@/components/board/view'
 import BoardWrite from '@/components/board/write'
+import Intro from '@/components/intro/index'
+import IntroDepartment from '@/components/intro/department'
+import IntroProfessor from '@/components/intro/professor'
+import IntroProcess from '@/components/intro/process'
 
 Vue.use(Router)
 
@@ -44,6 +48,28 @@ export default new Router({
             path: '/mypage/pw',
             name: 'MypagePw',
             component: MypagePw
+        },
+        {
+            path: '/intro/',
+            name: 'Intro',
+            component: Intro,
+            children: [
+                {
+                    path: '1',
+                    name: 'IntroDepartment',
+                    component: IntroDepartment
+                },
+                {
+                    path: '2',
+                    name: 'IntroProfessor',
+                    component: IntroProfessor
+                },
+                {
+                    path: '3',
+                    name: 'IntroProcess',
+                    component: IntroProcess
+                }
+            ]
         },
         {
             path: '/board/',

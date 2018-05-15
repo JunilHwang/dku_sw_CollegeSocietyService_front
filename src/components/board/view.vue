@@ -5,7 +5,7 @@
             <ul>
                 <li>
                     <strong class="lbl">작성자</strong>
-                    <div class="desc" v-html="boardData.writer" />
+                    <div class="desc" v-html="boardData.writerName" />
                 </li>
                 <li>
                     <strong class="lbl">제목</strong>
@@ -21,7 +21,7 @@
             </ul>
             <div class="btn_group">
                 <router-link :to="`/board/list/${$route.params.category}`" class="btn default">목록</router-link>
-                <template v-if="$store.state.member.name === boardData.writer">
+                <template v-if="$store.state.member.idx === boardData.writer">
                     <router-link :to="`/board/write/${$route.params.category}/${$route.params.idx}`" class="btn submit">수정</router-link>
                     <a href="#" class="btn submit" @click="boardDelete">삭제</a>
                 </template>

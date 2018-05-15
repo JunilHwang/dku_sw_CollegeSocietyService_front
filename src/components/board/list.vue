@@ -11,7 +11,7 @@
         <p v-else>
             게시물이 없습니다.
         </p>
-        <div class="btn_group right" v-if="$store.state.isMember">
+        <div class="btn_group right" v-show="$store.state.isMember">
             <router-link :to="'/board/write/'+categoryId" class="btn default">글작성</router-link>
         </div>
     </div>
@@ -37,7 +37,9 @@ export default {
     methods: {
         getList () {
             const _this = this
-            this.getJsonData('/boardList/' + this.$route.params.category, function (data) {
+            const url = '/boardList/' + this.$route.params.category
+            console.log(url)
+            this.getJsonData(url, function (data) {
                 _this.boardList = data
             })
         },
