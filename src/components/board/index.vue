@@ -10,8 +10,7 @@
                 </ul>
             </div>
             <div class="board-content">
-                <h2 class="content-title">커뮤니티</h2>
-                <h3 class="legend" v-html="category_name"></h3>
+                <h3 class="content-title" v-html="category_name"></h3>
                 <router-view></router-view>
             </div>
         </div>
@@ -37,12 +36,22 @@ export default {
 <style lang="scss" scoped>
     @import '@/styles/_base.scss';
     .board{position:relative;padding-left:260px;}
-    .board-wrap{background:#fff;}
     .category{width:240px;border:1px solid #ddd;box-sizing:border-box;padding:20px;height:350px;position:absolute;left:0;top:0;background:#fff;box-shadow:1px 1px 3px #ddd;}
     .category-title{font-size:21px;color:$color1;display:block;margin-bottom:20px}
     a{display:block;padding:0 10px;border-bottom:1px dotted #ddd;line-height:40px;transition:.3s;text-decoration:none;
         &:hover,
         &.router-link-active{background:$color3;color:#fff;}
     }
-    .board-content{border:1px solid #ddd;padding:50px;min-height:350px;box-shadow:1px 1px 3px #ddd;}
+    .board-content{border:1px solid #ddd;padding:50px;min-height:350px;box-shadow:1px 1px 3px #ddd;background:#fff;}
+
+    @include tablet () {
+        .board{padding-left:0;}
+        .category{width:auto;height:auto;position:static;margin-bottom:20px;}
+    }
+
+    @include mobile () {
+        .category{font-size:13px;}
+        .category-title{font-size:15px}
+        .board-content{padding:10px;min-height:350px;border:none;box-shadow:none;font-size:11px;}
+    }
 </style>

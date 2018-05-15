@@ -1,6 +1,5 @@
 <template>
     <div class="board-list">
-        <h3 class="board-title">게시물 목록</h3>
         <ul v-if="boardList.length">
             <li v-for="data in boardList" :key="data.idx">
                 <strong class="subject"><router-link :to="getLink(data.idx)" v-html="data.subject" /></strong>

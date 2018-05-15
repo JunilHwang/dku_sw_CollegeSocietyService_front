@@ -1,31 +1,27 @@
 <template>
     <div class="board-view">
-        <h3>게시물 조회</h3>
-        <div class="view_type_column">
-            <ul>
-                <li>
-                    <strong class="lbl">작성자</strong>
-                    <div class="desc" v-html="boardData.writerName" />
-                </li>
-                <li>
-                    <strong class="lbl">제목</strong>
-                    <div class="desc" v-html="boardData.subject" />
-                </li>
-                <li>
-                    <strong class="lbl">작성일</strong>
-                    <div class="desc" v-html="getDateFormat(boardData.date)" />
-                </li>
-                <li class="content">
-                    <div v-html="getContent()" />
-                </li>
-            </ul>
-            <div class="btn_group">
-                <router-link :to="`/board/list/${$route.params.category}`" class="btn default">목록</router-link>
-                <template v-if="$store.state.member.idx === boardData.writer">
-                    <router-link :to="`/board/write/${$route.params.category}/${$route.params.idx}`" class="btn submit">수정</router-link>
-                    <a href="#" class="btn submit" @click="boardDelete">삭제</a>
-                </template>
-            </div>
+        <div class="subject-line">
+            <h3 class="subject" v-html="boardData.subject" />
+            <span class="writer">
+                <i class="fas fa-pencil-alt"></i>
+                <strong class="writer" v-html="boardData.writerName" />
+            </span>
+            <span class="date-time">
+                <i class="far fa-calendar-alt"></i>
+                {{getDateFormat(boardData.date)}}
+            </span>
+            <span class="hits">
+                <i class="fas fa-eye"></i>
+                {{boardData.hit}}
+            </span>
+        </div>
+        <div class="boardContent" v-html="getContent()" />
+        <div class="btn_group">
+            <router-link :to="`/board/list/${$route.params.category}`" class="btn default">목록</router-link>
+            <template v-if="$store.state.member.idx === boardData.writer">
+                <router-link :to="`/board/write/${$route.params.category}/${$route.params.idx}`" class="btn submit">수정</router-link>
+                <a href="#" class="btn submit" @click="boardDelete">삭제</a>
+            </template>
         </div>
     </div>
 </template>
@@ -69,6 +65,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .view_type_column{border-top:2px solid #666;margin-top:15px;}
-    .content{min-height:200px;padding:20px}
+    @import "@/styles/_base.scss";
+    .subject-line{border-bottom:1px dashed #ddd;padding-bottom:15px;margin-bottom:15px;color:#aaa;
+        span+span{padding-left:20px;}
+        i{display:inline-block;width:20px;vertical-align:middle;color:$color2-1;}
+        strong{color:#000;}
+    }
+    .subject{font-size:23px;padding-bottom:10px;color:#444;}
+    .boardContent{min-height:200px;padding:20px;line-height:175%}
 </style>

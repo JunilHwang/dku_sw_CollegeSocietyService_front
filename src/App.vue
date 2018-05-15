@@ -16,7 +16,7 @@ export default {
     computed: {
         siteContentCustom () {
             let className = ''
-            if (this.$route.path.indexOf('board') !== -1) {
+            if (this.$route.path.indexOf('board') !== -1 || this.$route.path.indexOf('intro') !== -1) {
                 className = ' type2'
             }
             return className

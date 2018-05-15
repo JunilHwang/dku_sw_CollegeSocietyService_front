@@ -89,5 +89,8 @@ export default {
 
 <style lang="scss" scoped>
     @import "@/styles/_base.scss";
-   .register{width:600px;margin:0 auto;}
+    .register{width:600px;margin:0 auto;}
+    @include mobile() {
+        .register{width:auto;margin:0}
+    }
 </style>

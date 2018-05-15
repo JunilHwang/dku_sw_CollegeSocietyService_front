@@ -49,5 +49,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import "@/styles/_base.scss";
    .mypage{width:600px;margin:0 auto;}
+   @include mobile () {
+       .mypage{width:auto;margin:0;}
+   }
 </style>

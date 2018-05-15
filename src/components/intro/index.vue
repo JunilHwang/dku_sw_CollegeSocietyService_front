@@ -1,7 +1,6 @@
 <template>
     <div class="intro">
-        <h2 class="content-title">소프트웨어학과 소개</h2>
-        <div class="content-wrap">
+        <div class="intro-wrap">
             <div class="category">
                 <strong class="category-title">카테고리</strong>
                 <ul>
@@ -43,13 +42,23 @@ export default {
 
 <style lang="scss" scoped>
     @import '@/styles/_base.scss';
-    .content-wrap{display:flex;justify-content:space-between;
-        .category{width:240px;border:1px solid #ddd;box-sizing:border-box;padding:20px;height:350px;}
-        .category-title{font-size:21px;color:$color1;display:block;margin-bottom:20px}
-        a{display:block;padding:0 10px;border-bottom:1px dotted #ddd;line-height:40px;transition:.3s;text-decoration:none;
-            &:hover,
-            &.router-link-active{background:$color3;color:#fff;}
-        }
-        .intro-content{width:calc(100% - 280px);}
+    .intro{position:relative;padding-left:260px;}
+    .category{width:240px;border:1px solid #ddd;box-sizing:border-box;padding:20px;height:350px;position:absolute;left:0;top:0;background:#fff;box-shadow:1px 1px 3px #ddd;}
+    .category-title{font-size:21px;color:$color1;display:block;margin-bottom:20px}
+    a{display:block;padding:0 10px;border-bottom:1px dotted #ddd;line-height:40px;transition:.3s;text-decoration:none;
+        &:hover,
+        &.router-link-active{background:$color3;color:#fff;}
+    }
+    .intro-content{border:1px solid #ddd;padding:50px;min-height:350px;box-shadow:1px 1px 3px #ddd;background:#fff;}
+
+    @include tablet () {
+        .intro{padding-left:0;}
+        .category{width:auto;height:auto;position:static;margin-bottom:20px;}
+    }
+
+    @include mobile () {
+        .category{font-size:13px;}
+        .category-title{font-size:15px}
+        .intro-content{padding:10px;min-height:350px;border:none;box-shadow:none;font-size:11px;}
     }
 </style>

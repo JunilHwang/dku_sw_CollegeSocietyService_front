@@ -8,6 +8,7 @@
                 </router-link>
             </h3>
             <div class="util">
+                <router-link to="/" class="only-mobile">홈</router-link>
                 <template v-if="$store.state.isMember">
                     <a href="#" @click="logout">로그아웃</a>
                     <router-link to="/mypage">마이페이지</router-link>
@@ -74,6 +75,22 @@ export default {
             &.router-link-active{color:$color1;
                 &:before{$size:40%;left:$size;right:$size;}
             }
+        }
+    }
+    @include tablet () {
+        #header{padding:0 20px;}
+    }
+    @include mobile () {
+        #header{position:fixed;left:0;right:0;bottom:0;z-index:100;border-top:2px solid $color1;border-bottom:none;
+            >div{display:block;height:auto;}
+        }
+        .logo{display:none}
+        .util{position:fixed;left:0;right:0;top:0;line-height:30px;display:flex;justify-content:center;background:#f5f5f5;border-bottom:1px solid #ddd;
+            a{float:none;line-height:30px;}
+        }
+        .gnb{
+            ul{justify-content:space-around;height:40px;line-height:40px;}
+            a{font-size:13px;padding:0 20px;}
         }
     }
 </style>

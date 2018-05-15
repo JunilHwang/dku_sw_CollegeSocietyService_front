@@ -13,6 +13,7 @@ import BoardWrite from '@/components/board/write'
 import Intro from '@/components/intro/index'
 import IntroDepartment from '@/components/intro/department'
 import IntroProfessor from '@/components/intro/professor'
+import IntroProfessorDetail from '@/components/intro/professorDetail'
 import IntroProcess from '@/components/intro/process'
 
 Vue.use(Router)
@@ -63,6 +64,11 @@ export default new Router({
                     path: '2',
                     name: 'IntroProfessor',
                     component: IntroProfessor
+                },
+                {
+                    path: '2/:idx',
+                    name: 'IntroProfessorDetail',
+                    component: IntroProfessorDetail
                 },
                 {
                     path: '3',

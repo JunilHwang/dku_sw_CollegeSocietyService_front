@@ -1,6 +1,6 @@
 <template>
     <div class="department">
-        <h3 class="legend">학과소개</h3>
+        <h2 class="content-title">학과소개</h2>
         <div class="content">
             <dl>
                 <dt>
@@ -84,7 +84,14 @@ export default {
         dt{font-size:19px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #ddd;color:$color1-2;}
         dd{margin-bottom:30px;color:#666;line-height:180%;}
     }
-    .info{display:flex;justify-content:space-between;
-        font-size:17px;
+    .info{display:flex;justify-content:space-between;font-size:17px;}
+
+    @include mobile () {
+        .content{
+            dt{font-size:17px;}
+        }
+        .info{display:block;font-size:17px;
+            ul{margin-bottom:15px;}
+        }
     }
 </style>
