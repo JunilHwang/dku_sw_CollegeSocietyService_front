@@ -3,7 +3,7 @@
         <div class="content">
             <h3 class="logo">
                 <router-link to="/">
-                    <img src="@/assets/img/dk-logo.png" alt="단국대학교" />
+                    <img src="@/assets/img/dk-logo.png" alt="단국대학교" width="200" />
                     <p>College Society Service</p>
                 </router-link>
             </h3>
@@ -59,7 +59,6 @@ export default {
     }
     .logo{color:$color1;font-size:17px;
         a{text-decoration:none;display:flex;line-height:100%;flex-flow:column;justify-content:center;align-items:center;}
-        img{height:30px}
         p{padding-top:10px;color:$color2-1;}
     }
     .util{position:absolute;right:0;top:0;line-height:20px;font-size:11px;@include clr();

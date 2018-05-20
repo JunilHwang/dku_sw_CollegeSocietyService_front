@@ -8,7 +8,7 @@ import $ from 'jquery'
 import moment from 'moment'
 
 Vue.config.productionTip = false
-const restUrl = 'http://127.0.0.1:5000'
+const restUrl = 'http://220.149.235.59:5000'
 
 Vue.mixin({
     methods: {

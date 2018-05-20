@@ -48,6 +48,6 @@ export default {
         .fas{color:$color2-1;width:20px;text-align:center;display:inline-block;}
         .name{font-size:21px}
         .btm{margin-top:10px;position:absolute;right:0;bottom:20px;}
-        .img_wrap img{width:120px;}
+        .img_wrap img{width:120px;height:160px}
     }
 </style>
